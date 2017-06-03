@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from './recipe';
+import { RecipeService } from './recipe.service';
 
 @Component({
   selector: 'my-app',
@@ -62,29 +63,22 @@ import { Recipe } from './recipe';
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-  `]
-
+  `],
+  providers: [RecipeService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit  {
   title = 'Amazing recipes';
   selectedRecipe: Recipe;
-  recipes = RECIPES;
+  recipes: Recipe[];
+  constructor(private recipeService: RecipeService) { }
   onSelect(recipe: Recipe): void {
     this.selectedRecipe = recipe;
   };
+  getRecipes(): void {
+    this.recipeService.getRecipes().then(recipees => this.recipes = recipees);
+  };
+  ngOnInit(): void {
+    this.getRecipes();
+  };
 }
-
-const RECIPES: Recipe[] = [
-  { id: 11, name: 'Salted caramel tart' },
-  { id: 12, name: 'Pistachio macaron' },
-  { id: 13, name: 'Strawberry cheescake' },
-  { id: 14, name: 'Crepes' },
-  { id: 15, name: 'Brownie' },
-  { id: 16, name: 'Blueberry zephyr' },
-  { id: 17, name: 'Banana bread' },
-  { id: 18, name: 'Cinnamon buns' },
-  { id: 19, name: 'Japanese pancakes' },
-  { id: 20, name: 'American cookies' }
-];
-
