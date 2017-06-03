@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-export class Recipe {
-  id: number;
-  name: string;
-}
+import { Recipe } from './recipe';
 
 @Component({
   selector: 'my-app',
@@ -16,14 +12,7 @@ export class Recipe {
         <span class="badge">{{recipe.id}}</span> {{recipe.name}}
       </li>
     </ul>
-    <div *ngIf="selectedRecipe">
-      <h2>{{selectedRecipe.name}} details!</h2>
-      <div><label>id: </label>{{selectedRecipe.id}}</div>
-      <div>
-          <label>name: </label>
-          <input [(ngModel)]="selectedRecipe.name" placeholder="name"/>
-      </div>
-    </div>
+    <recipe-detail [recipe]="selectedRecipe"></recipe-detail>
   `,
     styles: [`
     .selected {
@@ -84,7 +73,6 @@ export class AppComponent {
   onSelect(recipe: Recipe): void {
     this.selectedRecipe = recipe;
   };
-
 }
 
 const RECIPES: Recipe[] = [
