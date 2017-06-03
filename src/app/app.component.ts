@@ -9,11 +9,21 @@ export class Recipe {
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
+    <h2>My Recipes</h2>
     <ul class="recipes">
-      <li *ngFor="let recipe of recipes">
+      <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)" [class.selected]="recipe === selectedRecipe"
+>
         <span class="badge">{{recipe.id}}</span> {{recipe.name}}
       </li>
     </ul>
+    <div *ngIf="selectedRecipe">
+      <h2>{{selectedRecipe.name}} details!</h2>
+      <div><label>id: </label>{{selectedRecipe.id}}</div>
+      <div>
+          <label>name: </label>
+          <input [(ngModel)]="selectedRecipe.name" placeholder="name"/>
+      </div>
+    </div>
   `,
     styles: [`
     .selected {
@@ -69,11 +79,12 @@ export class Recipe {
 
 export class AppComponent {
   title = 'Amazing recipes';
-  recipe: Recipe = {
-    id: 1,
-    name: 'Coconut cake'
-  };
+  selectedRecipe: Recipe;
   recipes = RECIPES;
+  onSelect(recipe: Recipe): void {
+    this.selectedRecipe = recipe;
+  };
+
 }
 
 const RECIPES: Recipe[] = [
