@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard.component';
 import { RecipesComponent } from './recipes.component';
 import { RecipeDetailComponent } from './recipe-detail.component';
 import { RecipeService } from './recipe.service';
+import { RecipeSearchComponent } from './recipe-search.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { RecipeService } from './recipe.service';
     AppComponent,
     DashboardComponent,
     RecipesComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    RecipeSearchComponent
   ],
   providers: [RecipeService],
   bootstrap:    [ AppComponent ]
