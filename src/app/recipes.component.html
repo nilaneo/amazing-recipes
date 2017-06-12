@@ -1,8 +1,16 @@
 <h2>My Recipes</h2>
+<div>
+  <label>Recipe name:</label> <input #recipeName />
+  <button (click)="add(recipeName.value); recipeName.value=''">
+    Add
+  </button>
+</div>
 <ul class="recipes">
   <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)" [class.selected]="recipe === selectedRecipe"
 >
-    <span class="badge">{{recipe.id}}</span> {{recipe.name}}
+    <span class="badge">{{recipe.id}}</span>
+    <span>{{recipe.name}}</span>
+    <button class="delete" (click)="delete(recipe); $event.stopPropagation()">x</button>
   </li>
 </ul>
 <div *ngIf="selectedRecipe">

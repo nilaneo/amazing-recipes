@@ -25,10 +25,35 @@ export class RecipeService {
       .catch(this.handleError);
   }
 
+  create(name: string): Promise<Recipe> {
+    return this.http
+      .post(this.recipesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data as Recipe)
+      .catch(this.handleError);
+  }
+
+  delete(id: number): Promise<void> {
+    const url = `${this.recipesUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 
+  private headers = new Headers({'Content-Type': 'application/json'});
+    update(recipe: Recipe): Promise<Recipe> {
+      const url = `${this.recipesUrl}/${recipe.id}`;
+      return this.http
+        .put(url, JSON.stringify(recipe), {headers: this.headers})
+        .toPromise()
+        .then(() => recipe)
+        .catch(this.handleError);
+    }
 }
 
