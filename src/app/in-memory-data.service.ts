@@ -2,7 +2,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let recipes = [
-      { id: 11, name: 'Salted caramel tart' },
+      { id: 11, name: 'Salted caramel tart', ingredients: ['salt', 'caramel', 'tart'] },
       { id: 12, name: 'Pistachio macaron' },
       { id: 13, name: 'Strawberry cheescake' },
       { id: 14, name: 'Crepes' },

@@ -1,8 +1,7 @@
 <h2>My Recipes</h2>
 <div>
-  <label>Recipe name:</label> <input #recipeName />
-  <button (click)="add(recipeName.value); recipeName.value=''">
-    Add
+  <button class="btn-add" (click)="goToAdd()">
+    + add a recipe
   </button>
 </div>
 <ul class="recipes">

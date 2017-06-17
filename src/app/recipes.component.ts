@@ -27,21 +27,15 @@ export class RecipesComponent implements OnInit  {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedRecipe.id]);
+    this.router.navigate(['/recipies', this.selectedRecipe.id]);
+  }
+
+  goToAdd(): void {
+    this.router.navigate(['/recipies/new']);
   }
 
   ngOnInit(): void {
     this.getRecipes();
-  }
-
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.recipeService.create(name)
-      .then(recipe => {
-        this.recipes.push(recipe);
-        this.selectedRecipe = null;
-      });
   }
 
   delete(recipe: Recipe): void {

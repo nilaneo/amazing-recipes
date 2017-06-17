@@ -15,6 +15,7 @@ import { RecipesComponent } from './recipes.component';
 import { RecipeDetailComponent } from './recipe-detail.component';
 import { RecipeService } from './recipe.service';
 import { RecipeSearchComponent } from './recipe-search.component';
+import { AddRecipeComponent } from './add-recipe.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { RecipeSearchComponent } from './recipe-search.component';
     DashboardComponent,
     RecipesComponent,
     RecipeDetailComponent,
-    RecipeSearchComponent
+    RecipeSearchComponent,
+    AddRecipeComponent
   ],
   providers: [RecipeService],
   bootstrap:    [ AppComponent ]

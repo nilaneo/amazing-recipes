@@ -6,6 +6,14 @@
     <label>name: </label>
     <input [(ngModel)]="recipe.name" placeholder="name" />
   </div>
+  <div>
+    <label>ingredients: </label>
+    <ul>
+      <li *ngFor="let ingredient of recipe.ingredients">
+        {{ ingredient }}
+      </li>
+    </ul>
+  </div>
   <button (click)="save()">Save</button>
   <button (click)="goBack()">Back</button>
 </div>

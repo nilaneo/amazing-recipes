@@ -25,9 +25,9 @@ export class RecipeService {
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Recipe> {
+  create({name, ingredients}: Recipe): Promise<Recipe> {
     return this.http
-      .post(this.recipesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.recipesUrl, JSON.stringify({name, ingredients}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Recipe)
       .catch(this.handleError);
