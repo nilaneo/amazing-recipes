@@ -1,0 +1,20 @@
+<h2>My Recipes</h2>
+<div>
+  <button class="btn-add" (click)="goToAdd()">
+    + add a recipe
+  </button>
+</div>
+<ul class="recipes">
+  <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)" [class.selected]="recipe === selectedRecipe"
+>
+    <span class="badge">{{recipe.id}}</span>
+    <span>{{recipe.name}}</span>
+    <button class="delete" (click)="delete(recipe); $event.stopPropagation()">x</button>
+  </li>
+</ul>
+<div *ngIf="selectedRecipe">
+  <h2>
+    {{selectedRecipe.name | uppercase}} is an amazing recipe
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
