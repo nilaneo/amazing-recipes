@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdToolbarModule, MdTabsModule } from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
-import { AppComponent } from './components/app/app.component';
+import { RootComponent } from './components/root/root.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
@@ -19,10 +22,13 @@ import { AddRecipeComponent } from './components/add-recipe/add-recipe.component
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MdToolbarModule,
+    MdTabsModule
   ],
   declarations: [
-    AppComponent,
+    RootComponent,
     DashboardComponent,
     RecipesComponent,
     RecipeDetailComponent,
@@ -30,6 +36,6 @@ import { AddRecipeComponent } from './components/add-recipe/add-recipe.component
     AddRecipeComponent
   ],
   providers: [RecipeService],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ RootComponent ]
 })
 export class AppModule { }
