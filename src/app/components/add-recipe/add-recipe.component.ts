@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { RecipeService } from './recipe.service';
-import { Recipe } from './recipe';
+import { RecipeService } from '../../services/recipe.service';
+import { Recipe } from '../../types/recipe';
 
 @Component({
-  selector: 'add-recipe',
+  selector: 'ar-add-recipe',
   templateUrl: './add-recipe.component.html',
 })
 

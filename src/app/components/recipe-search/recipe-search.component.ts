@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
-import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
-// Observable class extensions
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
-// Observable operators
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import { RecipeSearchService } from './recipe-search.service';
-import { Recipe } from './recipe';
+import { RecipeSearchService } from '../../services/recipe-search.service';
+import { Recipe } from '../../types/recipe';
 @Component({
-  selector: 'recipe-search',
+  selector: 'ar-recipe-search',
   templateUrl: './recipe-search.component.html',
   styleUrls: [ './recipe-search.component.css' ],
   providers: [RecipeSearchService]
@@ -22,18 +20,16 @@ export class RecipeSearchComponent implements OnInit {
   constructor(
     private recipeSearchService: RecipeSearchService,
     private router: Router) {}
-  // Push a search term into the observable stream.
+
   search(term: string): void {
     this.searchTerms.next(term);
   }
   ngOnInit(): void {
     this.recipes = this.searchTerms
-      .debounceTime(300)        // wait 300ms after each keystroke before considering the term
-      .distinctUntilChanged()   // ignore if next search term is same as previous
-      .switchMap(term => term   // switch to new observable each time the term changes
-        // return the http search observable
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap(term => term
         ? this.recipeSearchService.search(term)
-        // or the observable of empty recipes if there was no search term
         : Observable.of<Recipe[]>([]))
       .catch(error => {
         // TODO: add real error handling
@@ -42,7 +38,7 @@ export class RecipeSearchComponent implements OnInit {
       });
   }
   gotoDetail(recipe: Recipe): void {
-    let link = ['/detail', recipe.id];
+    const link = ['/recipes', recipe.id];
     this.router.navigate(link);
   }
 }

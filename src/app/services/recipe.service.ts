@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { Recipe } from './recipe';
+import { Recipe } from '../types/recipe';
 
 @Injectable()
 export class RecipeService {
-  private recipesUrl = 'api/recipes';  // URL to web api
+  private recipesUrl = 'api/recipes';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
 
@@ -46,14 +47,13 @@ export class RecipeService {
     return Promise.reject(error.message || error);
   }
 
-  private headers = new Headers({'Content-Type': 'application/json'});
-    update(recipe: Recipe): Promise<Recipe> {
-      const url = `${this.recipesUrl}/${recipe.id}`;
-      return this.http
-        .put(url, JSON.stringify(recipe), {headers: this.headers})
-        .toPromise()
-        .then(() => recipe)
-        .catch(this.handleError);
-    }
+  update(recipe: Recipe): Promise<Recipe> {
+    const url = `${this.recipesUrl}/${recipe.id}`;
+    return this.http
+      .put(url, JSON.stringify(recipe), {headers: this.headers})
+      .toPromise()
+      .then(() => recipe)
+      .catch(this.handleError);
+  }
 }
 

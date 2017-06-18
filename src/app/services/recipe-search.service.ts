@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http }       from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { Recipe }           from './recipe';
+import { Recipe } from '../types/recipe';
 @Injectable()
 export class RecipeSearchService {
   constructor(private http: Http) {}

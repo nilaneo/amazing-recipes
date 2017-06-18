@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from './recipe';
-import { RecipeService } from './recipe.service';
-import { Router }   from '@angular/router';
+import { Router } from '@angular/router';
+import { Recipe } from '../../types/recipe';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
-  selector: 'my-recipes',
+  selector: 'ar-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: [ './recipes.component.css' ]
 })
@@ -27,11 +27,11 @@ export class RecipesComponent implements OnInit  {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/recipies', this.selectedRecipe.id]);
+    this.router.navigate(['/recipes', this.selectedRecipe.id]);
   }
 
   goToAdd(): void {
-    this.router.navigate(['/recipies/new']);
+    this.router.navigate(['/recipes/new']);
   }
 
   ngOnInit(): void {
