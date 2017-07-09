@@ -5,3 +5,9 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
+
+.floating-action-button {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}

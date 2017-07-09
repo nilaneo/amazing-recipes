@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { sortBy } from 'lodash-es';
 import { Recipe } from '../../types/recipe';
 import { RecipeService } from '../../services/recipe.service';
 
@@ -23,7 +24,9 @@ export class RecipesComponent implements OnInit  {
   }
 
   getRecipes(): void {
-    this.recipeService.getRecipes().then(recipees => this.recipes = recipees);
+    this.recipeService.getRecipes().then(recipes => {
+      this.recipes = sortBy(recipes, (recipe) => recipe.name.toUpperCase());
+    });
   }
 
   gotoDetail(): void {
@@ -31,7 +34,7 @@ export class RecipesComponent implements OnInit  {
   }
 
   goToAdd(): void {
-    this.router.navigate(['/recipes/new']);
+    this.router.navigate(['/recip es/new']);
   }
 
   ngOnInit(): void {

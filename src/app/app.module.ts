@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdToolbarModule, MdTabsModule } from '@angular/material';
+import { MdToolbarModule, MdTabsModule, MdListModule, MdButtonModule, MdIconModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -25,7 +25,10 @@ import { AddRecipeComponent } from './components/add-recipe/add-recipe.component
     AppRoutingModule,
     BrowserAnimationsModule,
     MdToolbarModule,
-    MdTabsModule
+    MdTabsModule,
+    MdListModule,
+    MdButtonModule,
+    MdIconModule
   ],
   declarations: [
     RootComponent,
