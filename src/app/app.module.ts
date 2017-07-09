@@ -7,6 +7,7 @@ import {
   MdToolbarModule, MdTabsModule, MdListModule, MdButtonModule,
   MdIconModule, MdInputModule
 } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -33,7 +34,8 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     MdListModule,
     MdButtonModule,
     MdIconModule,
-    MdInputModule
+    MdInputModule,
+    FlexLayoutModule
   ],
   declarations: [
     RootComponent,

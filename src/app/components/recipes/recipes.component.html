@@ -2,9 +2,8 @@
   <md-list-item
     *ngFor="let recipe of recipes"
     (click)="goToDetail(recipe)"
-    [class.selected]="recipe === selectedRecipe"
   >
-    <span class="recipe-name">{{recipe.name}}</span>
+    <span fxFlex="1 0 auto">{{recipe.name}}</span>
     <button md-icon-button (click)="delete(recipe); $event.stopPropagation()">
       <md-icon>delete</md-icon>
     </button>
