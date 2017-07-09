@@ -18,7 +18,6 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { EditRecipeComponent } from './components/edit-recipe/edit-recipe.component';
 import { RecipeService } from './services/recipe.service';
 import { RecipeSearchComponent } from './components/recipe-search/recipe-search.component';
-import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 
 @NgModule({
@@ -43,7 +42,6 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     RecipesComponent,
     EditRecipeComponent,
     RecipeSearchComponent,
-    AddRecipeComponent,
     RecipeComponent
   ],
   providers: [RecipeService],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 import { RecipeService } from '../../services/recipe.service';
@@ -22,13 +23,30 @@ export class EditRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-      .switchMap((params: Params) => this.recipeService.getRecipe(+params['id']))
+      .switchMap((params: Params) => {
+        if (params['id']) {
+          return this.recipeService.getRecipe(+params['id']);
+        } else {
+          return Observable.of({
+            name: '',
+            ingredients: []
+          });
+        }
+      })
       .subscribe(recipe => this.recipe = recipe);
   };
 
   save(): void {
-    this.recipeService.update(this.recipe)
+    this.saveOrUpdate()
       .then(() => this.goBack());
+  }
+
+  saveOrUpdate() {
+    if (this.recipe.id == null) {
+      return this.recipeService.create(this.recipe);
+    } else {
+      return this.recipeService.update(this.recipe);
+    }
   }
 
   goBack(): void {
