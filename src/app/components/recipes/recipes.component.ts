@@ -10,17 +10,15 @@ import { RecipeService } from '../../services/recipe.service';
   styleUrls: [ './recipes.component.css' ]
 })
 export class RecipesComponent implements OnInit  {
-  title = 'Amazing recipes';
-  selectedRecipe: Recipe;
   recipes: Recipe[];
 
   constructor(
     private router: Router,
     private recipeService: RecipeService
-    ) { }
+  ) { }
 
-  onSelect(recipe: Recipe): void {
-    this.selectedRecipe = recipe;
+  ngOnInit(): void {
+    this.getRecipes();
   }
 
   getRecipes(): void {
@@ -29,25 +27,19 @@ export class RecipesComponent implements OnInit  {
     });
   }
 
-  gotoDetail(): void {
-    this.router.navigate(['/recipes', this.selectedRecipe.id]);
+  goToDetail(recipe): void {
+    this.router.navigate(['/recipes', recipe.id]);
   }
 
   goToAdd(): void {
-    this.router.navigate(['/recip es/new']);
-  }
-
-  ngOnInit(): void {
-    this.getRecipes();
+    this.router.navigate(['/recipes/new']);
   }
 
   delete(recipe: Recipe): void {
     this.recipeService
-        .delete(recipe.id)
-        .then(() => {
-          this.recipes = this.recipes.filter(h => h !== recipe);
-          if (this.selectedRecipe === recipe) { this.selectedRecipe = null; }
-        });
+      .delete(recipe.id)
+      .then(() => {
+        this.recipes = this.recipes.filter(h => h !== recipe);
+      });
   }
-
 }

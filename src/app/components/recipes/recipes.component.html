@@ -1,7 +1,7 @@
 <md-list>
   <md-list-item
     *ngFor="let recipe of recipes"
-    (click)="onSelect(recipe)"
+    (click)="goToDetail(recipe)"
     [class.selected]="recipe === selectedRecipe"
   >
     <span class="recipe-name">{{recipe.name}}</span>
@@ -10,13 +10,6 @@
     </button>
   </md-list-item>
 </md-list>
-
-<div *ngIf="selectedRecipe">
-  <h2>
-    {{selectedRecipe.name | uppercase}} is an amazing recipe
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
-</div>
 
 <div class="floating-action-button">
   <button md-fab (click)="goToAdd()"><md-icon>add</md-icon></button>

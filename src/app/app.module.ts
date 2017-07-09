@@ -3,7 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdToolbarModule, MdTabsModule, MdListModule, MdButtonModule, MdIconModule } from '@angular/material';
+import {
+  MdToolbarModule, MdTabsModule, MdListModule, MdButtonModule,
+  MdIconModule, MdInputModule
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -11,10 +14,11 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { RootComponent } from './components/root/root.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
-import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
+import { EditRecipeComponent } from './components/edit-recipe/edit-recipe.component';
 import { RecipeService } from './services/recipe.service';
 import { RecipeSearchComponent } from './components/recipe-search/recipe-search.component';
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
+import { RecipeComponent } from './components/recipe/recipe.component';
 
 @NgModule({
   imports: [
@@ -28,15 +32,17 @@ import { AddRecipeComponent } from './components/add-recipe/add-recipe.component
     MdTabsModule,
     MdListModule,
     MdButtonModule,
-    MdIconModule
+    MdIconModule,
+    MdInputModule
   ],
   declarations: [
     RootComponent,
     DashboardComponent,
     RecipesComponent,
-    RecipeDetailComponent,
+    EditRecipeComponent,
     RecipeSearchComponent,
-    AddRecipeComponent
+    AddRecipeComponent,
+    RecipeComponent
   ],
   providers: [RecipeService],
   bootstrap: [ RootComponent ]

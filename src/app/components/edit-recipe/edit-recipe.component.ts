@@ -7,11 +7,12 @@ import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../types/recipe';
 
 @Component({
-  selector: 'ar-recipe-detail',
-  templateUrl: './recipe-detail.component.html',
+  selector: 'ar-edit-recipe',
+  templateUrl: './edit-recipe.component.html',
+  styleUrls: ['./edit-recipe.component.css']
 })
 
-export class RecipeDetailComponent implements OnInit {
+export class EditRecipeComponent implements OnInit {
   recipe: Recipe;
   constructor(
     private recipeService: RecipeService,
@@ -34,4 +35,15 @@ export class RecipeDetailComponent implements OnInit {
     this.location.back();
   }
 
+  addIngredient(): void {
+    this.recipe.ingredients.push('');
+  }
+
+  removeIngredient(index: number): void {
+    this.recipe.ingredients.splice(index, 1);
+  }
+
+  getIndex(index: number) {
+    return index;
+  }
 }

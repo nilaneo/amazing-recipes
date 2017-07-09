@@ -1,0 +1,13 @@
+<div *ngIf="recipe">
+  <h2>{{recipe.name}}</h2>
+  <h3>Ingredients</h3>
+  <ul>
+    <li *ngFor="let ingredient of recipe.ingredients">
+      {{ ingredient }}
+    </li>
+  </ul>
+</div>
+
+<div class="floating-action-button">
+  <button md-fab (click)="goToEdit()"><md-icon>edit</md-icon></button>
+</div>

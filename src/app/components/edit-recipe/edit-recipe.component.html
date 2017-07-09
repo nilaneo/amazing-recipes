@@ -1,0 +1,22 @@
+<div *ngIf="recipe">
+  <md-input-container>
+    <input mdInput placeholder="Recipe name" [(ngModel)]="recipe.name">
+  </md-input-container>
+
+  <div>
+    <h3>Ingredients</h3>
+    <div *ngFor="let ingredient of recipe.ingredients; index as i; trackBy: getIndex">
+      <md-input-container>
+        <input mdInput [(ngModel)]="recipe.ingredients[i]" />
+      </md-input-container>
+      <button md-icon-button (click)="removeIngredient(i)"><md-icon>delete</md-icon></button>
+    </div>
+    <button md-raised-button (click)="addIngredient()">
+      <md-icon>add</md-icon> Add ingredient
+    </button>
+  </div>
+
+  <div class="floating-action-button">
+    <button md-fab (click)="save()"><md-icon>save</md-icon></button>
+  </div>
+</div>
