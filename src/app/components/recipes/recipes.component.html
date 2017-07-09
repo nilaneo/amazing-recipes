@@ -1,12 +1,21 @@
 <md-list>
-  <md-list-item
-    *ngFor="let recipe of recipes"
-    (click)="goToDetail(recipe)"
-  >
-    <span fxFlex="1 0 auto">{{recipe.name}}</span>
-    <button md-icon-button (click)="delete(recipe); $event.stopPropagation()">
-      <md-icon>delete</md-icon>
+  <md-list-item *ngFor="let recipe of recipes">
+    <span (click)="goToDetail(recipe)" fxFlex="1 0 auto">{{recipe.name}}</span>
+
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
     </button>
+
+    <md-menu #menu="mdMenu">
+      <button md-menu-item (click)="goToEdit(recipe)">
+        <md-icon>edit</md-icon>
+        <span>Edit</span>
+      </button>
+      <button md-menu-item (click)="delete(recipe)">
+        <md-icon>delete</md-icon>
+        <span>Delete</span>
+      </button>
+    </md-menu>
   </md-list-item>
 </md-list>
 

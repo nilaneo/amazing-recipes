@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdToolbarModule, MdTabsModule, MdListModule, MdButtonModule,
-  MdIconModule, MdInputModule
+  MdIconModule, MdInputModule, MdMenuModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -34,6 +34,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     MdButtonModule,
     MdIconModule,
     MdInputModule,
+    MdMenuModule,
     FlexLayoutModule
   ],
   declarations: [
