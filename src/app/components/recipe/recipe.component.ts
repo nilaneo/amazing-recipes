@@ -18,11 +18,11 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-      .switchMap((params: Params) => this.recipeService.getRecipe(+params['id']))
+      .switchMap((params: Params) => this.recipeService.getRecipe(params['id']))
       .subscribe((recipe) => this.recipe = recipe);
   }
 
   goToEdit(): void {
-    this.router.navigate(['/recipes', this.recipe.id, 'edit']);
+    this.router.navigate(['/recipes', this.recipe.$key, 'edit']);
   }
 }

@@ -38,7 +38,7 @@ export class RecipeSearchComponent implements OnInit {
       });
   }
   gotoDetail(recipe: Recipe): void {
-    const link = ['/recipes', recipe.id];
+    const link = ['/recipes', recipe.$key];
     this.router.navigate(link);
   }
 }

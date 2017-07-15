@@ -8,7 +8,11 @@ import {
   MdIconModule, MdInputModule, MdMenuModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -26,6 +30,9 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MdToolbarModule,

@@ -25,7 +25,7 @@ export class EditRecipeComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => {
         if (params['id']) {
-          return this.recipeService.getRecipe(+params['id']);
+          return this.recipeService.getRecipe(params['id']);
         } else {
           return Observable.of({
             name: '',
@@ -37,12 +37,12 @@ export class EditRecipeComponent implements OnInit {
   };
 
   save(): void {
-    this.saveOrUpdate()
+    Promise.resolve(this.saveOrUpdate())
       .then(() => this.goBack());
   }
 
   saveOrUpdate() {
-    if (this.recipe.id == null) {
+    if (this.recipe.$key == null) {
       return this.recipeService.create(this.recipe);
     } else {
       return this.recipeService.update(this.recipe);
